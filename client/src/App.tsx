@@ -11,8 +11,7 @@ import {
 import { themeSettings } from "@/theme"
 import Dashboardlayout from "@/components/layout/Dashboardlayout"
 import { Box, PaletteMode, useTheme } from "@mui/material"
-import { useThemeContext } from "./hook/useThemeContext"
-import { ThemeContext } from "./Context/ThemeContextProvider"
+
 import Dashboard from "./pages/Dashboard"
 import Predictions from "./pages/Predictions"
 
@@ -28,8 +27,9 @@ const router = createBrowserRouter(
 )
 
 function App() {
-  const { theme } = useThemeContext()
-  // const { palette } = useTheme()
+  // const { theme } = useThemeContext()
+  const theme = useMemo(() => createTheme(themeSettings), [])
+  // const theme = useTheme()
   return (
     <div className="app">
       <ThemeProvider theme={theme}>
