@@ -1,3 +1,4 @@
+import { PaletteMode } from "@mui/material";
 
 export const tokens = {
     grey: {
@@ -44,10 +45,48 @@ export const tokens = {
       main: "#1f2026",
     },
   };
+  export const getDesignTokens = (mode: PaletteMode) => ({
+    palette: {
+      mode,
+      ...(mode === "light"
+        ? {
+            // palette values for light mode
+            primary: {
+              main: "#fffbeb",
+            },
+            divider: "#fde68a",
+            background: {
+              default: "#fbbf24",
+              paper: "#fbbf24",
+            },
+            text: {
+              primary: "#000",
+              secondary: "#27272a",
+            },
+          }
+        : {
+            // palette values for dark mode
+            primary: {
+              main: "#dbf4ff",
+            },
+            divider: "#004282",
+            background: {
+              default: "#000e21",
+              paper: "#000e21",
+            },
+            text: {
+              primary: "#fff",
+              secondary: "#71717a",
+            },
+          }),
+    },
+  });
   
   // mui theme settings
   export const themeSettings = {
     palette: {
+    
+
       primary: {
         ...tokens.primary,
         main: tokens.primary[500],
@@ -69,6 +108,8 @@ export const tokens = {
         light: tokens.background.light,
       },
     },
+
+
     typography: {
       fontFamily: ["Inter", "sans-serif"].join(","),
       fontSize: 12,
