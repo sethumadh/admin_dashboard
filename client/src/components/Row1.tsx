@@ -1,14 +1,72 @@
+import {
+  ResponsiveContainer,
+  CartesianGrid,
+  AreaChart,
+  BarChart,
+  Bar,
+  LineChart,
+  XAxis,
+  YAxis,
+  Legend,
+  Line,
+  Tooltip,
+  Area,
+} from "recharts"
+
 import { useGetKpisQuery } from "@/redux/services"
-import DashboardBox from "./DashboardBox"
+import DashboardBox from "@/components/DashboardBox"
+import { Box, useTheme } from "@mui/material"
+import { useMemo } from "react"
+import BoxHeader from "@/components/BoxHeader"
+import Row1Area from "@/components/charts/Row1Area"
+import Row1Line from "./charts/Row1Line"
+import Row1Column from "./charts/Row1Column"
 
 const Row1 = () => {
-  const {data}= useGetKpisQuery()
-  console.log(data)
+  const { palette } = useTheme()
+  const { data, isLoading, isError } = useGetKpisQuery()
+  const revenueExpenses = useMemo(() => {
+    return (
+      data &&
+      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+          expenses: expenses,
+        }
+      })
+    )
+  }, [data])
+  console.log(data, "<<---")
+
   return (
     <>
-      <DashboardBox gridArea={`a`}></DashboardBox>
-      <DashboardBox gridArea={`d`}></DashboardBox>
-      <DashboardBox gridArea={`b`}></DashboardBox>
+      <DashboardBox gridArea={`a`} style={{ padding: "5px" }}>
+        <Box marginBottom={"15px"}>
+          <BoxHeader
+            title="Revenue and Expenses"
+            subtitle="top line - revenue, bottom line - expenses"
+            sideText="+4%"
+          />
+        </Box>
+        <Row1Area />
+      </DashboardBox>
+      <DashboardBox gridArea={`b`}>
+        <Box marginBottom={"15px"}>
+          <BoxHeader title="Profit and Revenue" sideText="+4%" />
+        </Box>
+        <Row1Line />
+      </DashboardBox>
+      <DashboardBox gridArea={`c`}>
+        <Box marginBottom={"15px"}>
+          <BoxHeader
+            title="Revenue month on mnth"
+            subtitle="Revenue on Y axis"
+            sideText="+4%"
+          />
+        </Box>
+        <Row1Column />
+      </DashboardBox>
     </>
   )
 }
