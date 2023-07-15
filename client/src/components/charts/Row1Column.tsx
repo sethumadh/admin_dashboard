@@ -3,9 +3,11 @@ import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
 import { useGetKpisQuery } from "@/redux/services"
+import { useTheme } from "@mui/material"
 
 const Row1Column = () => {
   const { data, isLoading, isError } = useGetKpisQuery()
+  const { palette } = useTheme()
   const month = useMemo(() => {
     return data && data[0].monthlyData.map(({ month }) => month.substring(0, 3))
   }, [data])
@@ -41,13 +43,13 @@ const Row1Column = () => {
     },
 
     yAxis: {
+      labels: {
+        style: {
+          color: "white", // Set the color of the x-axis labels to white
+        },
+      },
       title: {
         text: null,
-        labels: {
-          style: {
-            color: "white", // Set the color of the x-axis labels to white
-          },
-        },
       },
     },
     series: [

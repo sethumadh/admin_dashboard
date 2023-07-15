@@ -1,31 +1,41 @@
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
-import { useGetKpisQuery } from "@/redux/services"
+import { useGetProductsQuery, useGetKpisQuery } from "@/redux/services"
 import { useMemo } from "react"
 
 const Row2Line = () => {
-  const { data, isLoading, isError } = useGetKpisQuery()
+  const { data: operationalData } = useGetKpisQuery()
+  const { data: productData } = useGetProductsQuery()
   const month = useMemo(() => {
-    return data && data[0].monthlyData.map(({ month }) => month.substring(0, 3))
-  }, [data])
-  const revenue = useMemo(() => {
-    return data && data[0].monthlyData.map(({ revenue }) => revenue)
-  }, [data])
-
-  const profit = useMemo(() => {
     return (
-      data &&
-      data[0].monthlyData.map(({ revenue, expenses }) =>
-        parseFloat((revenue - expenses).toFixed(2))
+      operationalData &&
+      operationalData[0].monthlyData.map(({ month }) => month.substring(0, 3))
+    )
+  }, [operationalData])
+
+  const opData = useMemo(() => {
+    return (
+      operationalData &&
+      operationalData[0].monthlyData.map(
+        ({ operationalExpenses }) => operationalExpenses
       )
     )
-  }, [data])
+  }, [operationalData])
+
+  const nonOpData = useMemo(() => {
+    return (
+      operationalData &&
+      operationalData[0].monthlyData.map(
+        ({ nonOperationalExpenses }) => nonOperationalExpenses
+      )
+    )
+  }, [operationalData])
 
   const options = {
     chart: {
       type: "line",
-      height: 300,
+      height: 220,
       // width:4 00,
       backgroundColor: "#2d2d34",
       credits: {
@@ -81,14 +91,14 @@ const Row2Line = () => {
 
     series: [
       {
-        name: "Revenue in $",
-        data: revenue,
+        name: "Operational Expenses in $",
+        data: opData,
         yAxis: 0,
         color: "red",
       },
       {
-        name: "Profit in $",
-        data: profit,
+        name: "Non Operational Expenses in $",
+        data: nonOpData,
         yAxis: 1,
       },
     ],
