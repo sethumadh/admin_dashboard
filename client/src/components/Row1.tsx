@@ -1,44 +1,12 @@
-import {
-  ResponsiveContainer,
-  CartesianGrid,
-  AreaChart,
-  BarChart,
-  Bar,
-  LineChart,
-  XAxis,
-  YAxis,
-  Legend,
-  Line,
-  Tooltip,
-  Area,
-} from "recharts"
-
-import { useGetKpisQuery } from "@/redux/services"
 import DashboardBox from "@/components/DashboardBox"
 import { Box, useTheme } from "@mui/material"
-import { useMemo } from "react"
+
 import BoxHeader from "@/components/BoxHeader"
 import Row1Area from "@/components/charts/Row1Area"
 import Row1Line from "./charts/Row1Line"
 import Row1Column from "./charts/Row1Column"
 
 const Row1 = () => {
-  const { palette } = useTheme()
-  const { data, isLoading, isError } = useGetKpisQuery()
-  const revenueExpenses = useMemo(() => {
-    return (
-      data &&
-      data[0].monthlyData.map(({ month, revenue, expenses }) => {
-        return {
-          name: month.substring(0, 3),
-          revenue: revenue,
-          expenses: expenses,
-        }
-      })
-    )
-  }, [data])
-  console.log(data, "<<---")
-
   return (
     <>
       <DashboardBox gridArea={`a`} style={{ padding: "5px" }}>
@@ -60,7 +28,7 @@ const Row1 = () => {
       <DashboardBox gridArea={`c`}>
         <Box marginBottom={"15px"}>
           <BoxHeader
-            title="Revenue month on mnth"
+            title="Revenue month on month"
             subtitle="Revenue on Y axis"
             sideText="+4%"
           />

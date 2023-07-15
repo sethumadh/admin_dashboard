@@ -30,7 +30,7 @@ const AreaChart = () => {
   const expenses = useMemo(() => {
     return data && data[0].monthlyData.map(({ expenses }) => expenses)
   }, [data])
-
+console.log(data)
   const options = {
     chart: {
       type: "area",
