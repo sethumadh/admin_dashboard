@@ -6,8 +6,12 @@ import morgan from 'morgan';
 
 import { config } from './config/config';
 import kpiRoutes from './routes/kpi';
+import productRoutes from './routes/products';
+import transactionRoutes from './routes/transaction';
 import KPI from './models/KPI';
-import { kpis } from './data/data';
+import Product from './models/Product';
+import Transaction from './models/Transaction';
+import { kpis, products, transactions } from './data/data';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -20,10 +24,12 @@ app.use(morgan('common'));
 app.use(cors());
 
 //Routes
-    // app.use('/', (req, res) => {
-    //     res.json('hello');
-    // });
+// app.use('/', (req, res) => {
+//     res.json('hello');
+// });
 app.use('/kpi', kpiRoutes);
+app.use('/product', productRoutes);
+app.use('/transaction', transactionRoutes);
 
 mongoose
     .connect(`${config.mongo.url}/admin_dash`, { retryWrites: true, w: 'majority' })
@@ -45,6 +51,9 @@ mongoose
         // Add data one time only
         // await mongoose.connection.db.dropDatabase();
         // KPI.insertMany(kpis);
+
+        // Product.insertMany(products);
+        // Transaction.insertMany(transactions);
     })
     .catch((e) => {
         console.log(e, 'Connection to Mongo Unsuccessful');

@@ -8,7 +8,7 @@ import FlexBetween from "./FlexBetween"
 
 const Navbar = () => {
   const { palette } = useTheme()
-  const [selected, setSelected] = useState("dashboard")
+  const [selected, setSelected] = useState("")
 
   return (
     <FlexBetween mb={`0.25rem`} p={`0.5rem 0rem`} color={palette.grey[300]}>
@@ -23,8 +23,20 @@ const Navbar = () => {
       <FlexBetween gap={`2rem`}>
         <Box sx={{ "&:hover": { color: palette.grey[100] } }}>
           <Link
-            onClick={() => setSelected("dashboard")}
+            onClick={() => setSelected("home")}
             to={"/"}
+            style={{
+              color: selected == "home" ? "inherit" : palette.grey[700],
+              textDecoration: "inherit",
+            }}
+          >
+            Home
+          </Link>
+        </Box>
+        <Box sx={{ "&:hover": { color: palette.grey[100] } }}>
+          <Link
+            onClick={() => setSelected("dashboard")}
+            to={"/dashboard"}
             style={{
               color: selected == "dashboard" ? "inherit" : palette.grey[700],
               textDecoration: "inherit",
