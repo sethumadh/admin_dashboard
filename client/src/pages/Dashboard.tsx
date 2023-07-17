@@ -1,4 +1,4 @@
-import { Row1, Row2, Row3 } from "@/components"
+import { Row1, Row2} from "@/components"
 import {
   gridTemplateSmallScreens,
   gridTemplateLargeScreens,
@@ -10,10 +10,11 @@ function Dashboard() {
   return (
     <>
       <Box
+      // mt={`50px`}
         width="100%"
         height={`100%`}
         display={`grid`}
-        gap={`1.5rem`}
+        gap={`2.5rem`}
         sx={
           isAboveMediaScreens
             ? {
@@ -30,7 +31,7 @@ function Dashboard() {
       >
         <Row1 />
         <Row2 />
-        <Row3 />
+        {/* <Row3 /> */}
       </Box>
     </>
   )

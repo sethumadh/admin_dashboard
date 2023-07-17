@@ -21,8 +21,8 @@ const Row2Pie = () => {
   const options = {
     chart: {
       type: "pie",
-      height: 180,
-      width:200,
+      height: 250,
+      width:300,
       backgroundColor: "#2d2d34",
     },
     title: {
@@ -30,6 +30,12 @@ const Row2Pie = () => {
       style: {
         color: "#ffffff", // Set the title text color to white
         // font:"10px"
+      },
+    },
+    legend: {
+      enabled: true,
+      itemStyle: {
+        color: "white", // Set the color of the legend text names to white
       },
     },
     plotOptions: {
@@ -56,7 +62,9 @@ const Row2Pie = () => {
   }
 
   return (
+    <div style={{padding:"8px"}}>
     <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
+    </div>
   )
 }
 

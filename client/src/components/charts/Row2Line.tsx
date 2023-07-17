@@ -104,7 +104,11 @@ const Row2Line = () => {
     ],
   }
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />
+  return (
+    <div style={{padding:"8px"}}> 
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  )
 }
 
 export default Row2Line

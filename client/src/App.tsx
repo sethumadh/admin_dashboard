@@ -14,12 +14,14 @@ import { Box, PaletteMode, useTheme } from "@mui/material"
 
 import Dashboard from "./pages/Dashboard"
 import Predictions from "./pages/Predictions"
+import Table from "./pages/Table"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Dashboardlayout />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Table/>} />
+        <Route path="/dashboard"  element={<Dashboard />}/>
         <Route path="/predictions" element={<Predictions />} />
       </Route>
     </>
