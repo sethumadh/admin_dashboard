@@ -18,6 +18,7 @@ const TransactionSchema = new Schema<ITransaction >(
             type:Number,
             currency: 'USD',
             set: (v: string) => parseFloat(v.replace('$', '')),
+            get: (v: number) => v * 100
 
         },
         productIds: [
