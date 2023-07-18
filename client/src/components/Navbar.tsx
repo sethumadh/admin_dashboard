@@ -15,12 +15,15 @@ const Navbar = () => {
       {/* left side icon */}
       <FlexBetween gap={`0.75rem`}>
         <PixIcon sx={{ fontSize: "28px", color: "whitesmoke" }} />
-        <Typography variant="h4" fontSize={`16px`}>
+        <Typography variant="h4" fontSize={`16px`} marginRight={`20px`}>
           FinApp
         </Typography>
       </FlexBetween>
       {/* right side */}
-      <FlexBetween gap={`2rem`}>
+      <FlexBetween
+        gap={`.5rem`}
+        sx={{ xs: { gap: ".5rem" }, md: { gap: `2rem` } }}
+      >
         <Box sx={{ "&:hover": { color: palette.grey[100] } }}>
           <Link
             onClick={() => setSelected("home")}

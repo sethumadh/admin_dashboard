@@ -21,7 +21,7 @@ const Row2Pie = () => {
   const options = {
     chart: {
       type: "pie",
-      height: 250,
+      height: 200,
       width:300,
       backgroundColor: "#2d2d34",
     },

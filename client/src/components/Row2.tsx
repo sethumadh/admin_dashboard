@@ -28,7 +28,7 @@ function Row2() {
         // justifyContent={`space-`}
       >
         <Row2Pie />
-        {/* <Box ml="-0.7rem"  flexBasis="40%" textAlign="center">
+        <Box ml="-0.7rem"  flexBasis="40%" textAlign="center" >
           <Typography variant="h5">Target Sales</Typography>
           <Typography m="0.3rem 0" variant="h3" color={palette.primary[300]}>
             83
@@ -36,7 +36,7 @@ function Row2() {
           <Typography variant="h6">
             Finance goals of the campaign that is desired
           </Typography>
-        </Box> */}
+        </Box>
       </DashboardBox>
       <DashboardBox gridArea={`f`}>
         <Box>

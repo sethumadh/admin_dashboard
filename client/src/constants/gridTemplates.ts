@@ -25,6 +25,7 @@ export const gridTemplateSmallScreens = `
 "d"
 "e"
 "e"
+"e"
 "f"
 "f"
 "f"
