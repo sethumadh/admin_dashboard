@@ -24,12 +24,12 @@ app.use(morgan('common'));
 app.use(cors());
 
 //Routes
-// app.use('/', (req, res) => {
-//     res.json('hello');
-// });
 app.use('/kpi', kpiRoutes);
 app.use('/product', productRoutes);
 app.use('/transaction', transactionRoutes);
+// app.use('/', (req, res) => {
+//     res.json('hello');
+// });
 
 mongoose
     .connect(`${config.mongo.url}/admin_dash`, { retryWrites: true, w: 'majority' })
