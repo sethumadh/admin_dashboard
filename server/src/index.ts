@@ -8,12 +8,12 @@ import { config } from './config/config';
 import kpiRoutes from './routes/kpi';
 import productRoutes from './routes/products';
 import transactionRoutes from './routes/transaction';
-import userRoutes from './routes/user';
+import authRoutes from './routes/auth';
 import KPI from './models/KPI';
 import Product from './models/Product';
 import Transaction from './models/Transaction';
 import { kpis, products, transactions } from './data/data';
-import { Err } from './library/type';
+import { Err } from './types/type';
 import { globalErrorHandler } from './controllers/errorController';
 import { customError } from './utils/customError';
 
@@ -39,7 +39,7 @@ app.use(cors());
 app.use('/kpi', kpiRoutes);
 app.use('/product', productRoutes);
 app.use('/transaction', transactionRoutes);
-app.use('/user', userRoutes);
+app.use('/users', authRoutes);
 
 // catch all other invalid url for page not found
 

@@ -1,6 +1,6 @@
 import express, { Express, NextFunction, Request, Response } from 'express';
 
-import { Err } from '../library/type';
+import { Err } from '../types/type';
 import { customError } from '../utils/customError';
 
 const devErrors = (err: Err, res: Response) => {
@@ -36,10 +36,23 @@ const duplicationErrorHandler = (err: Err) => {
     err.isOperational = true;
     customError(msg, 'Fail', 400, true);
 };
+const handleExpiredJwt = (err: Err) => {
+    const msg = `Jwt Token has expired for the user. Please LOG IN AGAIN`;
+    err.message = msg;
+    err.isOperational = true;
+    customError(msg, 'Fail', 400, true);
+};
+const handleJwtError = (err: Err) => {
+    const msg = `Jwt Token has been tampered with`;
+    err.message = msg;
+    err.isOperational = true;
+    customError(msg, 'Fail', 400, true);
+};
 
+// globakl error handler
 export const globalErrorHandler = (err: Err, req: Request, res: Response, next: NextFunction) => {
     err.statusCode = err.statusCode || 500;
-    err.status = err.statusCode >= 400 && err.statusCode < 500 ? 'Fail' : 'error';
+    err.status = err.statusCode >= 400 && err.statusCode < 500 ? 'Fail' : 'server error';
 
     Error.captureStackTrace(err);
 
@@ -47,13 +60,18 @@ export const globalErrorHandler = (err: Err, req: Request, res: Response, next: 
     else if (process.env.NODE_ENV === 'production') {
         // CAST ERROR
         if (err.name === 'CastError') castErrorHandler(err);
-        // Validation ERROR
 
+        // Validation ERROR
         if (err.name === 'ValidationError') ValidationErrorHandler(err);
 
         // Mongoose ID duplication error
-
         if (err?.code == 11000) duplicationErrorHandler(err);
+
+        // jwt token expired error
+        if (err.name == 'TokenExpiredError') handleExpiredJwt(err);
+
+        // jwt tampered with
+        if (err.name == 'JsonWebTokenError') handleJwtError(err);
 
         prodErrors(err, res);
     }

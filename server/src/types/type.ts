@@ -11,5 +11,12 @@ export interface Err extends Error {
     errors?: {
         [key: string]: any;
     };
-    _message?:string
+    _message?: string;
 }
+export interface DecodeToken {
+    email: string;
+    name: string;
+    id: string;
+    iat:string
+}
+
