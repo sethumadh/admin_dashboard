@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { ITransaction } from './Transaction';
+
 export interface IProduct {
     price: number;
     expense: number;
