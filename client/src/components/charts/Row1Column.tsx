@@ -2,8 +2,9 @@ import React, { useMemo } from "react"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
-import { useGetKpisQuery } from "@/redux/services"
+
 import { useTheme } from "@mui/material"
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
 
 const Row1Column = () => {
   const { data, isLoading, isError } = useGetKpisQuery()

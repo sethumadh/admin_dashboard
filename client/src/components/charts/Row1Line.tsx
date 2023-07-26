@@ -1,7 +1,8 @@
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
-import { useGetKpisQuery } from "@/redux/services"
+
 import { useMemo } from "react"
 
 const Row2Line = () => {

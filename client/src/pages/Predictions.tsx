@@ -1,8 +1,9 @@
 import DashboardBox from "@/components/DashboardBox"
 import FlexBetween from "@/components/FlexBetween"
-import { useGetKpisQuery } from "@/redux/services"
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
+
 import { Box, Button, Typography, useTheme } from "@mui/material"
-import React, { useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import {
   CartesianGrid,
   Label,
@@ -16,7 +17,6 @@ import {
   YAxis,
 } from "recharts"
 import regression, { DataPoint } from "regression"
-
 
 const Predictions = () => {
   const { palette } = useTheme()
@@ -37,15 +37,14 @@ const Predictions = () => {
     return monthData.map(({ month, revenue }, i: number) => {
       return {
         name: month,
-        "Revenue": parseInt(revenue.toFixed(0)),
-        "Regression": parseInt(regressionLine.points[i][1].toFixed(0)),
+        Revenue: parseInt(revenue.toFixed(0)),
+        Regression: parseInt(regressionLine.points[i][1].toFixed(0)),
         "Predicted Revenue": parseInt(
           regressionLine.predict(i + 12)[1].toFixed(0)
         ),
       }
     })
   }, [kpiData])
-
 
   return (
     <DashboardBox width="100%" height="100%" p="1rem" overflow="hidden">
@@ -114,11 +113,13 @@ const Predictions = () => {
               dot={false}
             />
 
-         {  isPredictions && <Line
-              strokeDasharray="5 5"
-              dataKey="Predicted Revenue"
-              stroke={palette.secondary[500]}
-            />}
+            {isPredictions && (
+              <Line
+                strokeDasharray="5 5"
+                dataKey="Predicted Revenue"
+                stroke={palette.secondary[500]}
+              />
+            )}
           </LineChart>
         </ResponsiveContainer>
       )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Highcharts from "highcharts"
-import { useGetKpisQuery } from "@/redux/services"
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
+
 
 const TableSummary = () => {
   const { data: kpiData } = useGetKpisQuery()
@@ -55,7 +56,7 @@ const TableSummary = () => {
   }, [kpiData])
 
   return (
-    <div style={{padding:"10px"}}>
+    <div style={{ padding: "10px" }}>
       <div ref={chartContainerRef} />
     </div>
   )

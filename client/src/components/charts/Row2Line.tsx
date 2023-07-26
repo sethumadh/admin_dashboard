@@ -1,7 +1,8 @@
+import { useGetKpisQuery, useGetProductsQuery } from "@/redux/services/servicesApiSlice"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
-import { useGetProductsQuery, useGetKpisQuery } from "@/redux/services"
+
 import { useMemo } from "react"
 
 const Row2Line = () => {
@@ -105,7 +106,7 @@ const Row2Line = () => {
   }
 
   return (
-    <div style={{padding:"8px"}}> 
+    <div style={{ padding: "8px" }}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

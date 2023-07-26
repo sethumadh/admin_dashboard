@@ -1,11 +1,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Avatar, Box, Typography, useTheme, useMediaQuery } from "@mui/material"
 import { DataGrid, gridClasses, GridCellParams } from "@mui/x-data-grid"
-import {
-  useGetKpisQuery,
-  useGetProductsQuery,
-  useGetTransactionsQuery,
-} from "@/redux/services"
+
 import { dateFormat } from "@/helper/functions/dateFormatter"
 import {
   gridTemplateSmallScreens,
@@ -15,6 +11,7 @@ import { DashboardBox } from "@/components"
 import BoxHeader from "@/components/BoxHeader"
 import TablePie from "@/components/charts/TablePie"
 import TableSummary from "@/components/charts/TableSummary"
+import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from "@/redux/services/servicesApiSlice"
 
 const Table = () => {
   const isAboveMediaScreens = useMediaQuery("(min-width:1000px)")
@@ -93,7 +90,7 @@ const Table = () => {
               <BoxHeader title="Overall Summary" sideText="" />
             </Box>
             {/* <Row1Line /> */}
-            <TableSummary/>
+            <TableSummary />
           </DashboardBox>
         </Box>
       </Box>

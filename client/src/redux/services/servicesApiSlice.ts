@@ -1,14 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import {
   GetKpisResponse,
   GetProductsResponse,
   GetTransactionsResponse,
-} from "./types"
+} from "../types"
+import { api } from "./api"
 
-export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
-  reducerPath: "main",
-  tagTypes: ["Kpis", "Products", "Transactions"],
+export const servicesSliceApi = api.injectEndpoints({
   endpoints: (build) => ({
     getKpis: build.query<Array<GetKpisResponse>, void>({
       query: () => "kpi/kpis/",
@@ -26,4 +23,4 @@ export const api = createApi({
 })
 
 export const { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } =
-  api
+  servicesSliceApi

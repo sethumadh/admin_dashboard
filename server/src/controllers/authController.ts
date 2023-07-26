@@ -139,7 +139,7 @@ export const logout = asyncErrorHanlder(async (req: Request, res: Response, next
 // Auth middleware for Route protection
 export const protect = asyncErrorHanlder(async (req: Request, res: Response, next: NextFunction) => {
     // if we were to use cookie
-   //token = req.cookies.jwt
+    //token = req.cookies.jwt
 
     // 1. Check whether Token exists
     const authHeadersValue = req.headers.authorization;

@@ -1,7 +1,8 @@
-import React from "react"
+
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-import { useGetProductsQuery } from "@/redux/services"
+import { useGetProductsQuery } from "@/redux/services/servicesApiSlice"
+
 
 const Row2Scatter = () => {
   const { data: productData } = useGetProductsQuery()
@@ -51,7 +52,7 @@ const Row2Scatter = () => {
     series: [
       {
         name: "Data",
-        data: price?.map((value,index)=>(expense && expense[index],value)),
+        data: price?.map((value, index) => (expense && expense[index], value)),
         color: "white",
       },
     ],

@@ -10,7 +10,7 @@ import { Avatar } from "@mui/material"
 // import { setActivePath } from "../redux/features/sidebarSlice"
 // import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
 // import { logoutSuccess } from "../helper/functions/functions"
-import { setActivePath } from "@/redux/sidebarSlice"
+import { setActivePath } from "@/redux/state/sidebarSlice"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 function SideNavBar() {
   const location = useLocation()

@@ -1,7 +1,8 @@
 import React, { useMemo } from "react"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-import { useGetKpisQuery } from "@/redux/services"
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
+
 
 const AreaChart = () => {
   const { data, isLoading, isError } = useGetKpisQuery()

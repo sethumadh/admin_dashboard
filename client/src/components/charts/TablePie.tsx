@@ -1,7 +1,8 @@
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-import { useGetKpisQuery } from "@/redux/services"
+
 import { ExpensesByCategory } from "@/redux/types"
+import { useGetKpisQuery } from "@/redux/services/servicesApiSlice"
 
 const TablePie = () => {
   const { data: kpiData } = useGetKpisQuery()
@@ -16,7 +17,7 @@ const TablePie = () => {
         y: kpiData[0].expensesByCategory[cat as keyof ExpensesByCategory],
       }
     })
- 
+
   const options = {
     chart: {
       type: "pie",
