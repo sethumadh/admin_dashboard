@@ -12,10 +12,14 @@ import authRoutes from './routes/auth';
 import KPI from './models/KPI';
 import Product from './models/Product';
 import Transaction from './models/Transaction';
+import { Vendor2, vendor, vendor1 } from './data/VendorData';
+import Vendor from './models/Vendor';
 import { kpis, products, transactions } from './data/data';
 import { Err } from './types/type';
 import { globalErrorHandler } from './controllers/errorController';
 import { customError } from './utils/customError';
+import StudentCourses from './models/Student';
+import { Rohit } from './data/mockRohit';
 
 // unhandled exception Error
 process.on('uncaughtException', (err: Err) => {
@@ -74,6 +78,11 @@ mongoose.connect(`${config.mongo.url}/admin_dash`, { retryWrites: true, w: 'majo
 
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
+    // Vendor.insertMany(Vendor2);
+    // Vendor.insertMany(vendor);
+    // Vendor.insertMany(vendor1);
+
+    // StudentCourses.insertMany(Rohit);
 });
 
 const server = app.listen(config.server.port, () => console.log(`Server Port: http://localhost:${config.server.port}`));
