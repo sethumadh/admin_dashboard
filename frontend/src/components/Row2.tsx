@@ -8,6 +8,12 @@ import Row2Pie from "./charts/Row2Pie"
 import Row2Scatter from "./charts/Row2Scatter"
 function Row2() {
   const { palette } = useTheme()
+  const theme = useTheme()
+
+  // Define font sizes for different screen sizes
+  const titleFontSize = theme.breakpoints.down("md") ? "18px" : "24px"
+  const subtitleFontSize = theme.breakpoints.down("md") ? "10px" : "18px"
+
   return (
     <>
       <DashboardBox gridArea={`d`}>
@@ -15,6 +21,7 @@ function Row2() {
           <BoxHeader
             title="Operational vs Non-Operational Expenses"
             sideText="+4%"
+            titleFontSize={titleFontSize}
           />
         </Box>
         <Row2Line />
@@ -28,19 +35,33 @@ function Row2() {
         // justifyContent={`space-`}
       >
         <Row2Pie />
-        <Box ml="-0.7rem"  flexBasis="40%" textAlign="center" >
-          <Typography variant="h5" color={palette.grey[300]}>Target Sales</Typography>
-          <Typography m="0.3rem 0" variant="h3" color={palette.grey[300]}>
-            83
+        <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+          <Typography
+            variant="h5"
+            color={palette.grey[300]}
+            fontSize={titleFontSize}
+          >
+            Target Sales - 83
           </Typography>
-          <Typography variant="h6" color={palette.grey[300]}>
+          {/* <Typography m="0.3rem 0" variant="h3" color={palette.grey[300]} fontSize={titleFontSize}>
+            83
+          </Typography> */}
+          <Typography
+            variant="h6"
+            color={palette.grey[300]}
+            fontSize={subtitleFontSize}
+          >
             Finance goals of the campaign that is desired
           </Typography>
         </Box>
       </DashboardBox>
       <DashboardBox gridArea={`f`}>
         <Box>
-          <BoxHeader title="Product Prices vs Expenses" sideText="+4%" />
+          <BoxHeader
+            title="Product Prices vs Expenses"
+            sideText="+4%"
+            titleFontSize={titleFontSize}
+          />
         </Box>
         <Row2Scatter />
       </DashboardBox>

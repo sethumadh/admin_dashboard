@@ -11,7 +11,7 @@ const Row2Scatter = () => {
   const options = {
     chart: {
       type: "scatter",
-      height: 280,
+      height: 250,
       backgroundColor: "#2d2d34",
     },
     title: {

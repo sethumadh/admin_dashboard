@@ -10,7 +10,7 @@ function Analytics() {
   return (
     <>
       <Box
-        p={`50px`}
+        p={`20px`}
         width="100%"
         height={`100%`}
         display={`grid`}
