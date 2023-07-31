@@ -110,7 +110,7 @@ export const getUser = asyncErrorHanlder(async (req: Request, res: Response, nex
 
 //************** Update user**************
 export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
-    const existingUser = await User.findOne({ _id: req.params._id });
+    const existingUser = await User.findOne({ email: req.params._id });
     if (!existingUser) {
         const error = customError('No such user exists @ksm', 'fail', 400, true);
         return next(error);
