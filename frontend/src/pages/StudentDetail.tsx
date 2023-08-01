@@ -97,7 +97,7 @@ const StudentDetail = () => {
 
   return (
     <>
-      <div className="py-5 px-8 text-lg font-normal leading-7  max-w-7xl m-auto">
+      <div className="py-5 px-8 text-lg font-normal leading-7 font-mada max-w-7xl m-auto">
         <Link to={`/`}>
           <ArrowBackIosIcon /> Back{" "}
         </Link>

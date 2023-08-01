@@ -39,10 +39,11 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className=" my-8 w-full max-w-7xl mx-auto ">
+    <div className=" my-8 w-full max-w-7xl mx-auto font-mada">
       <div id="dashboard" className="mx-8 ">
         <Summary />
       </div>
+      
       <div className="mt-8 mx-8 flex flex-col md:flex md:flex-row md:space-x-5 space-x-0 space-y-5 md:space-y-0">
         <div className=" w-full md:w-2/3 ">
           <AverageStudentsChart />

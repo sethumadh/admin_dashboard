@@ -111,7 +111,7 @@ const options = {
   series: [
     {
       name: "Avg. Progress",
-      data: [80],
+      data: [20],
       tooltip: {
         valueSuffix: "%",
       },

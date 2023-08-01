@@ -3,9 +3,9 @@ export const darkMode = ["class"]
 export const content = [
   // "./index.html",
   "./src/**/*.{ts,tsx}",
-  // "./pages/**/*.{ts,tsx}",
-  // "./components/**/*.{ts,tsx}",
-  // "./app/**/*.{  ts,tsx}",
+  "./pages/**/*.{ts,tsx}",
+  "./components/**/*.{ts,tsx}",
+  "./app/**/*.{  ts,tsx}",
 ]
 export const theme = {
   container: {

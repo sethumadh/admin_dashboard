@@ -10,7 +10,7 @@ const Header = ({ openDrawerRight }: HeaderProps) => {
     <div className="bg-slate-50 w-full">
       <div className="shadow-sm max-w-7xl  mx-auto">
         <nav className="flex items-center justify-between">
-          <div>
+          <div className="pl-8">
             <Link to={"/"} className="w-20 md:w-32  h-auto ml-8 rounded-full">
               <img src={images.FT} className="my-2" alt="Future Tayari" />
             </Link>
