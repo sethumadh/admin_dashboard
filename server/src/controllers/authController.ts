@@ -156,6 +156,7 @@ export const protect = asyncErrorHanlder(async (req: Request, res: Response, nex
     let decodedToken!: DecodeToken;
     jwt.verify(token as string, process.env.SECRET_STR! as string, function (err: any, decoded: any) {
         if (err) {
+            console.log(err, "---->>>>>>server")
             return next(err);
         }
         decodedToken = decoded;
