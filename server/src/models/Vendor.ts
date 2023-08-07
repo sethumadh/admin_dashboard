@@ -1,29 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-// Define the completedContent schema
-// interface ICompletedContent {
-//     name: string;
-//     timeRequired: number;
-//     id: string;
-//     status: string;
-//     startTime: string;
-//     completedTime: string;
-//     isCompleted: boolean;
-//     isMandatory: boolean;
-//     type: string;
-// }
-
-// Define the completedChapters schema
-// interface ICompletedChapters {
-//     name: string;
-//     timeRequired: number;
-//     chapterId: string;
-//     status: string;
-//     startTime: string;
-//     completedTime: string;
-//     isCompleted: boolean;
-//     isMandatory: boolean;
-//     completedContent: ICompletedContent[];
 // }
 
 // Define the profileImage schema

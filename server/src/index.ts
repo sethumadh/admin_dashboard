@@ -9,6 +9,8 @@ import kpiRoutes from './routes/kpi';
 import productRoutes from './routes/products';
 import transactionRoutes from './routes/transaction';
 import authRoutes from './routes/auth';
+import vendorRoutes from './routes/vendor';
+import studentCourseRoutes from './routes/studentCourse';
 import KPI from './models/KPI';
 import Product from './models/Product';
 import Transaction from './models/Transaction';
@@ -44,6 +46,8 @@ app.use('/kpi', kpiRoutes);
 app.use('/product', productRoutes);
 app.use('/transaction', transactionRoutes);
 app.use('/users', authRoutes);
+app.use('/vendor', vendorRoutes);
+app.use('/student-course', studentCourseRoutes);
 
 // catch all other invalid url for page not found
 

@@ -135,16 +135,13 @@ interface ICourse {
     thumbnail: string;
 }
 
-interface IPurchase {
+export interface IPurchase {
     purchasedOn: string;
     status: boolean;
     isCompleted: boolean;
     isPaidCourse: boolean;
     course: ICourse;
     completedChapters: IChapter[];
-}
-interface ICourses {
-    courses: IPurchase[];
 }
 
 const fileSchema = new Schema<IFile>({
@@ -208,7 +205,7 @@ const courseSchema = new Schema<ICourse>({
     thumbnail: { type: String }
 });
 
-const purchaseSchema = new Schema<IPurchase>({
+export const purchaseSchema = new Schema<IPurchase>({
     purchasedOn: { type: String },
     status: { type: Boolean },
     isCompleted: { type: Boolean },
@@ -216,18 +213,19 @@ const purchaseSchema = new Schema<IPurchase>({
     course: { type: courseSchema },
     completedChapters: { type: [chapterSchema] }
 });
-const CoursesSchema = new Schema<ICourses>({
-    courses: [purchaseSchema]
-});
+
 // **************** courses schema ans typescript
 
 // **************** StudentCourses schema ans typescript
+export interface IStudentCourses {
+    basicDetails: IBasicDetails;
+    courses: IPurchase[];
+}
+export interface IStudentCoursesModel extends IStudentCourses, Document {}
 
-export interface IStudentCoursesModel extends IBasicDetails, ICourses, Document {}
-
-const StudentCoursesSchema = new Schema({
+const StudentCoursesSchema = new Schema<IStudentCoursesModel>({
     basicDetails: BasicDetailsSchema,
-    courses: [CoursesSchema]
+    courses: [purchaseSchema]
 });
 
 const StudentCourses = mongoose.model<IStudentCoursesModel>('StudentCourse', StudentCoursesSchema);

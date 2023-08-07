@@ -62,7 +62,7 @@ const UserSchema = new Schema<IUserModel>({
     passwordChangedAt: { type: Date, select: false },
     team: {
         type: String,
-        required: [1, 'Atleast one team is required'],
+        // required: [1, 'Atleast one team is required'],
         enum: { values: [Team.Blue, Team.Yellow, Team.Red, Team.Green], message: 'no such team exists @ksm' }
     },
     resetPasswordToken: { type: String, select: false },
