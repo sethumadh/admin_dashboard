@@ -39,7 +39,7 @@ const Signin = () => {
     // mode: "onChange",
     resolver: zodResolver(SignupSchema),
     defaultValues: {
-      name:"",
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -68,9 +68,7 @@ const Signin = () => {
           },
         }
         // console.log(userData, "<<-- after login")
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${response.data.accessToken}`
+
         loginSucess()
         dispatch(fetchUser({ ...userData }))
         navigate("/", { replace: true })
@@ -281,9 +279,13 @@ const Signin = () => {
                         {...signupMethods.register("confirmPassword")}
                       />
                       <div className="h-4">
-                        {signupMethods.formState.errors.confirmPassword?.message && (
+                        {signupMethods.formState.errors.confirmPassword
+                          ?.message && (
                           <span className="text-xs text-red-600">
-                            {signupMethods.formState.errors.confirmPassword?.message}
+                            {
+                              signupMethods.formState.errors.confirmPassword
+                                ?.message
+                            }
                           </span>
                         )}
                       </div>

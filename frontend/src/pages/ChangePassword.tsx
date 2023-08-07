@@ -19,8 +19,10 @@ import { toast } from "react-hot-toast"
 
 import Icon from "../components/Icon"
 import { persistor, useAppSelector } from "../redux/store"
+import useAxiosInstance from "../hooks/useAxiosInstance"
 
 const ChangePassword = () => {
+  const { axiosInstance } = useAxiosInstance()
   const navigate = useNavigate()
   const user = useAppSelector((state) => state.user)
   const [open, setOpen] = useState(0)
@@ -56,18 +58,23 @@ const ChangePassword = () => {
   }) => {
     try {
       setIsSubmitting(true)
-      const response = await axios.post(
-        `${baseURL}/users/update/${user.user.email}`,
-        changePasswordData,
-        {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
+      // const response = await axios.post(
+      //   `${baseURL}/users/update/${user.user.email}`,
+      //   changePasswordData,
+      //   {
+      //     headers: {
+      //       Accept: "application/json",
+      //       Authorization: `Bearer ${user.accessToken}`,
+      //     },
+      //   }
+      // )
+      const response = axiosInstance.post(
+        `/users/update/${user.user.email}`,
+        changePasswordData
       )
+      console.log(response, "<<<<---- response")
       toast.success("Password updated successfully Please login again!")
-      handleLogout()
+      // handleLogout()
     } catch (err) {
       console.log(err)
       toast.error("Failed to update password")
