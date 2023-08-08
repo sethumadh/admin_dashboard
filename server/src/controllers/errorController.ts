@@ -37,7 +37,7 @@ const duplicationErrorHandler = (err: Err) => {
     customError(msg, 'Fail', 400, true);
 };
 const handleExpiredJwt = (err: Err) => {
-    const msg = `Jwt Token has expired for the user. Please LOG IN AGAIN`;
+    const msg = `TokenExpired`;
     err.message = msg;
     err.isOperational = true;
     customError(msg, 'Fail', 400, true);
