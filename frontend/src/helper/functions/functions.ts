@@ -107,17 +107,13 @@ export const progressChp = (cmpCnt: any) => {
 // *******************************************************//
 // Logout function
 
-
-
-export const logoutSuccess = () =>
-  toast.success("Succesfully logged out !")
+export const logoutSuccess = (message = "Succesfully logged out !") =>
+  toast.success(message)
 // *******************************************************//
 // login logout success
 
-export const loginError = () =>
-  toast.error("Email or Password is incorrect")
-export const loginSucess = () =>
-  toast.success("Succesfully Logged in")
+export const loginError = () => toast.error("Email or Password is incorrect")
+export const loginSucess = () => toast.success("Succesfully Logged in")
 // *******************************************************//
 // *******************Signup ************************************//
 export const signupSucess = () =>
@@ -125,4 +121,3 @@ export const signupSucess = () =>
 export const signupError = () =>
   toast.error("Something went wrong. Please try again!")
 // *******************Signup ************************************//
-  

@@ -68,13 +68,13 @@ const ChangePassword = () => {
       //     },
       //   }
       // )
-      const response = axiosInstance.post(
+      const response = await axiosInstance.post(
         `/users/update/${user.user.email}`,
         changePasswordData
       )
-      console.log(response, "<<<<---- response")
+      // console.log(response, "<<<<---- response")
       toast.success("Password updated successfully Please login again!")
-      // handleLogout()
+      handleLogout()
     } catch (err) {
       console.log(err)
       toast.error("Failed to update password")
