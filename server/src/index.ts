@@ -22,6 +22,7 @@ import { globalErrorHandler } from './controllers/errorController';
 import { customError } from './utils/customError';
 import StudentCourses from './models/Student';
 import { Rohit } from './data/mockRohit';
+import path from 'path';
 
 // unhandled exception Error
 process.on('uncaughtException', (err: Err) => {
@@ -49,6 +50,16 @@ app.use('/users', authRoutes);
 app.use('/vendor', vendorRoutes);
 app.use('/student-course', studentCourseRoutes);
 
+// Serve frontend static assets and handle catch-all route
+if (process.env.NODE_ENV === 'production') {
+    const __dirname = path.resolve();
+    app.use(express.static(path.join(__dirname, '/frontend/dist')));
+  
+    app.get('*', (req: Request, res: Response) =>
+      res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+    );
+  }
+  
 // catch all other invalid url for page not found
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
