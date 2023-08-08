@@ -18,5 +18,6 @@ export interface DecodeToken {
     name: string;
     id: string;
     iat:string
+    exp:string
 }
 
