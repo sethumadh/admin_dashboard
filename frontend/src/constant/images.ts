@@ -1,7 +1,7 @@
-import money from "../../public/money.png"
-import students from "../../public/students.png"
-import FTLogo from "../../public/FT.png"
-import FT from "../../public/FT.svg"
+import money from "../assets/money.png"
+import students from "../assets/students.png"
+import FTLogo from "../assets/FT.png"
+import FT from "../assets/FT.svg"
 
 export default {
     money,

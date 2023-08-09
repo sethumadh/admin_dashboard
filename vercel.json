@@ -1,17 +1,11 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/$1"
-      }
-    ],
-    "public": "public" 
-  }
-  
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "outputDirectory": "frontend/dist",
+    "framework": "vite",
+    "rewrites": [
+        {
+            "source": "/server/(.*)",
+            "destination": "/server/src/index.ts"
+        }
+    ]
+}
