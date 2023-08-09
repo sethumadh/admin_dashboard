@@ -74,7 +74,7 @@ const ChangePassword = () => {
       )
       console.log(response, "<<<<---- response")
       toast.success("Password updated successfully Please login again!")
-      // handleLogout()
+      handleLogout()
     } catch (err) {
       console.log(err)
       toast.error("Failed to update password")
