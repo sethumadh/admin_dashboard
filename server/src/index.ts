@@ -54,12 +54,10 @@ app.use('/student-course', studentCourseRoutes);
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/frontend/dist')));
-  
-    app.get('*', (req: Request, res: Response) =>
-      res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
-    );
-  }
-  
+
+    app.get('*', (req: Request, res: Response) => res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')));
+}
+
 // catch all other invalid url for page not found
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
@@ -74,6 +72,16 @@ app.use(globalErrorHandler);
 
 mongoose.connect(`${config.mongo.url}/admin_dash`, { retryWrites: true, w: 'majority' }).then(async () => {
     app.use(cors());
+    //******************************* */
+    // app.use(
+    //     cors({
+    //         origin: 'front end domain url' -->> which we should update after deplyoting frontend,
+    //         methods: ['POST', 'GET', 'PATCH'],
+    //         credentials:true
+    //     })
+    // );
+    //*********************************/
+
     app.use((req, res, next) => {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
