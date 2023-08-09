@@ -50,7 +50,7 @@ app.use('/users', authRoutes);
 app.use('/vendor', vendorRoutes);
 app.use('/student-course', studentCourseRoutes);
 
-// Serve frontend static assets and handle catch-all route
+// Server frontend static assets and handle catch-all route
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, '/frontend/dist')));
